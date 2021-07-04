@@ -5,12 +5,13 @@ const DB = new API();
 
 class App {
   constructor() {
-    this.currentContactId = "";
+    this.currentContactId = ""; // used to prepopulate the edit form
     this.contacts = [];
   }
 
   loadContacts() {
     DB.getAll().then((contacts) => {
+      // caching the response for use in the searchBox functionality
       this.contacts = contacts.sort((a, b) => a.full_name > b.full_name);
       $("#results").html(contactsTemplate({ contacts: contacts }));
     });
@@ -69,12 +70,9 @@ class App {
     $("body").on("click", ".tag", (event) => {
       event.stopPropagation();
       let tag = event.target.getAttribute("data-tag");
-      console.log(tag);
       let filteredContacts = this.contacts.filter((contact) => {
-        console.log(contact.tags);
         return contact.tags && contact.tags.includes(tag);
       });
-      console.log(filteredContacts);
       $("#results").html(contactsTemplate({ contacts: filteredContacts }));
     });
 
@@ -84,7 +82,7 @@ class App {
       let formData = JSON.stringify(
         Object.fromEntries(new FormData(event.target))
       );
-      DB.add(formData).then((json) => console.log(json));
+      DB.add(formData);
       this.loadContacts();
       $("#addContactForm").hide("fast");
       $("#results").show("slow");
@@ -96,9 +94,7 @@ class App {
       let formData = JSON.stringify(
         Object.fromEntries(new FormData(event.target))
       );
-      DB.update(this.currentContactId, formData).then((json) =>
-        console.log(json)
-      );
+      DB.update(this.currentContactId, formData);
       this.loadContacts();
       $("#editContactForm").hide("fast");
       $("#results").show("slow");

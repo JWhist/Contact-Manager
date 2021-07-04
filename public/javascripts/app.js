@@ -40,6 +40,7 @@ class App {
     $("body").on("click", ".add", (event) => {
       event.stopPropagation();
       $("#results").hide("fast");
+      $("#editContactForm").hide("fast");
       $("#addContactForm").show("slow");
     });
 

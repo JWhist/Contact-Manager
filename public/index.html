@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Contact Manager</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/styles.css" />
+    <script src="https://pagination.js.org/dist/2.1.5/pagination.min.js"></script>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/handlebars.js"></script>
+    <script type="module" src="/javascripts/api.js"></script>
+    <script type="module" src="/javascripts/app.js"></script>
+    <script type="module" src="/javascripts/views.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <p>Contact Manager</p>
+      <h4>Using Vanilla CSS, JQuery, and Handlebars</h4>
+    </header>
+    <div id="actionBar">
+      <button class="add">Add Contact</button>
+      <input id="searchBox" type="text" placeholder="search for name or tag" />
+    </div>
+    <div id="addContactForm">
+      <form>
+        <table>
+          <tr>
+            <td><p class="u formtitle">Add Contact</p></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><label for="afn">Name:</label></td>
+            <td><input id="afn" type="text" name="full_name" /></td>
+          </tr>
+          <tr>
+            <td><label for="aemail">Email:</label></td>
+            <td><input id="aemail" type="email" name="email" /></td>
+          </tr>
+          <tr>
+            <td><label for="aphone_number">Phone:</label></td>
+            <td>
+              <input
+                id="aphone_number"
+                type="tel"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                name="phone_number"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="atags">Tags, ie "Work, Friend, Family":</label></td>
+            <td><input id="atags" type="text" name="tags" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit" class="submit">Submit</button>
+              <button type="button" class="cancel">Cancel</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div id="editContactForm">
+      <form>
+        <table>
+          <tr>
+            <td><p class="u formtitle">Edit Contact</p></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><label for="efull_name">Name:</label></td>
+            <td><input id="efull_name" type="text" name="full_name" /></td>
+          </tr>
+          <tr>
+            <td><label for="eemail">Email:</label></td>
+            <td><input id="eemail" type="email" name="email" /></td>
+          </tr>
+          <tr>
+            <td><label for="ephone_number">Phone:</label></td>
+            <td><input id="ephone_number" type="tel" name="phone_number" /></td>
+          </tr>
+          <tr>
+            <td><label for="etags">Tags, ie "Work, Friend, Family":</label></td>
+            <td><input id="etags" type="text" name="tags" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button type="submit" class="submit">Submit</button>
+              <button type="button" class="cancel">Cancel</button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div id="results"></div>
+
+    <script id="contactsTemplate" type="text/x-handlebars">
+      {{#each contacts}}
+      {{>contact}}
+      {{/each}}
+    </script>
+
+    <script id="contactTemplate" type="text/x-handlebars">
+      <div class='card'>
+        <ul>
+          <li class='name'>{{full_name}}</li>
+          <li class='b'>Phone:</li>
+          <li>{{phone_number}}</li>
+          <li class='b'>Email:</li>
+          <li>{{email}}</li>
+          <li class='b'>Tags :</li>
+            {{#each tags}}
+              {{>tag}}
+            {{/each}}
+        </ul>
+        <div class='btns'>
+          <button class='edit' data-id={{id}}><i class="fas fa-pencil-alt"></i>Edit</button>
+          <button class='delete' data-id={{id}}><i class="far fa-trash-alt"></i>Delete</button>
+        </div>
+      </div>
+    </script>
+
+    <script id="tagTemplate" type="text/x-handlebars">
+      <button class='tag' data-tag='{{this}}'>{{this}}</button>
+    </script>
+
+    <script id="emptySearchTemplate" type="text/x-handlebars">
+      <div class="empty">
+        <p>There are no contacts containing <span class='search'>{{{this}}}</span></p>
+      </div>
+    </script>
+
+    <div class="footer">
+      <footer>
+        Created by jordan whistler for a
+        <a href="https://launchschool.com">Launch School</a> exercise in 2021
+      </footer>
+    </div>
+  </body>
+</html>

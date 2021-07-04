@@ -1,0 +1,51 @@
+[
+  {
+    "full_name": "Elvis Presley",
+    "phone_number": "800-333-9999",
+    "email": "elvis@yahoo.com",
+    "tags": "Singing, dancing",
+    "id": 6
+  },
+  {
+    "full_name": "Olivia",
+    "phone_number": "212-222-2222",
+    "email": "olivia@gmail.com",
+    "tags": "daughter, Family",
+    "id": 26
+  },
+  {
+    "full_name": "Jordan",
+    "phone_number": "123-456-7890",
+    "email": "jw@ls.com",
+    "tags": "Family",
+    "id": 27
+  },
+  {
+    "full_name": "Wife",
+    "phone_number": "123-456-7890",
+    "email": "wife@ls.com",
+    "tags": "Family",
+    "id": 28
+  },
+  {
+    "full_name": "Dad",
+    "phone_number": "123-456-7890",
+    "email": "dad@ls.com",
+    "tags": "Family",
+    "id": 29
+  },
+  {
+    "full_name": "Boss",
+    "phone_number": "123-456-7890",
+    "email": "boss@work.com",
+    "tags": "Work",
+    "id": 30
+  },
+  {
+    "full_name": "Person 1",
+    "phone_number": "123-456-7890",
+    "email": "friend@hello.com",
+    "tags": "Friend",
+    "id": 31
+  }
+]

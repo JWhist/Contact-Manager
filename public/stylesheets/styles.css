@@ -1,0 +1,212 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  font-weight: 500;
+  min-height: 15vh;
+  width: 100%;
+  padding: 10px;
+  background: rgb(138, 2, 179);
+  background: linear-gradient(
+    180deg,
+    rgba(138, 2, 179, 1) 0%,
+    rgba(205, 151, 255, 1) 100%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
+}
+
+header > p {
+  font-size: 2.25rem;
+}
+
+footer,
+a {
+  font-size: 0.5rem !important;
+}
+ul {
+  list-style-type: none;
+}
+
+input {
+  border-radius: 5px;
+  font-size: 1.1rem;
+  padding: 5px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0px 0px 3px 3px rgba(205, 151, 255, 0.6);
+}
+
+button {
+  padding: 2px;
+  margin: 2px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid rgba(205, 151, 255, 1);
+}
+
+button:hover {
+  transform: scale(0.8);
+  background-color: rgba(205, 151, 255, 1);
+  color: white;
+}
+
+form {
+  border: 1px solid purple;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px rgb(95, 95, 95);
+  padding: 10px;
+  margin: 10px;
+}
+
+h4 {
+  font-weight: 300;
+  font-size: 1.25rem;
+  padding-top: 10px;
+}
+
+mark {
+  background-color: #f5f5f5;
+  font-size: 1.25rem;
+}
+#actionBar {
+  width: 80vw;
+  margin: 0 10vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 5vh;
+  padding: 10px 0;
+  border: 1px solid black;
+  border-top: none;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+  border-color: #e3e3e3;
+}
+
+#addContactForm {
+  display: flex;
+  justify-content: center;
+}
+
+#editContactForm {
+  display: flex;
+  justify-content: center;
+}
+
+#results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.add,
+.submit,
+.cancel {
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.formtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6rem;
+  width: 150px;
+  min-height: 200px;
+  border: 1px solid rgba(205, 151, 255, 1);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgb(95, 94, 94);
+  margin: 8px;
+}
+.card * {
+  font-size: 0.8rem;
+  padding: 3px;
+}
+
+.btns {
+  margin-top: auto;
+  margin-bottom: 2px;
+  align-self: center;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.u {
+  text-decoration: underline;
+}
+
+.b {
+  font-weight: bold;
+}
+
+.tag {
+  font-size: 0.75rem;
+  padding: 2px;
+  box-shadow: none;
+  border-radius: 3px;
+}
+.tag:hover {
+  transform: scale(0.8);
+}
+
+.edit,
+.delete {
+  font-size: 0.8rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.empty {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 80vw;
+  height: 50px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #e3e3e3;
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px rgba(177, 174, 174, 0.993);
+  text-align: center;
+  background-color: #f5f5f5;
+}
+.empty > p {
+  font-size: 1.2rem;
+}
+
+.search {
+  font-weight: bold;
+}

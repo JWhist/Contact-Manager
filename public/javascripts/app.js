@@ -17,9 +17,9 @@ class App {
   }
 
   init() {
-    this.loadContacts();
     $("#addContactForm").hide();
     $("#editContactForm").hide();
+    this.loadContacts();
     this.addListeners();
   }
 

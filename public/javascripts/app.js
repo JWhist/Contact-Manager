@@ -70,7 +70,7 @@ class App {
 
     $("body").on("click", ".tag", (event) => {
       event.stopPropagation();
-      let tag = event.target.getAttribute("data-tag");
+      let tag = event.target.closest(".tag").getAttribute("data-tag");
       let filteredContacts = this.contacts.filter((contact) => {
         return contact.tags && contact.tags.includes(tag);
       });
@@ -103,23 +103,23 @@ class App {
 
     $("#searchBox").on("keyup", () => {
       let searchString = $("#searchBox").val();
+      let pattern = new RegExp("(" + searchString + ")", "gi");
       let filteredContacts = this.contacts.filter((contact) => {
         return (
-          contact.full_name.match(searchString) ||
-          contact.tags.some((tag) => tag.match(searchString))
+          contact.full_name.match(pattern) ||
+          contact.tags.some((tag) => tag.match(pattern))
         );
       });
+
       if (filteredContacts.length === 0) {
         $("#results").html(emptySearchTemplate(searchString));
       } else {
         $("#results").html(contactsTemplate({ contacts: filteredContacts }));
         [...$(".name, .tag")].forEach((el) => {
-          let pattern = new RegExp("(" + searchString + ")", "g");
-          if (pattern == "/()/g") return;
+          if (pattern == "/()/gi") return; //do nothing if search box is empty/backspace
           let origText = el.innerHTML;
           let newText = origText.replace(pattern, "<mark>$1</mark>");
           el.innerHTML = newText;
-          console.log(el.innerText);
         });
       }
     });

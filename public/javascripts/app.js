@@ -59,7 +59,13 @@ class App {
         $("#editContactForm form input[name='phone_number']").val(
           contact.phone_number
         );
-        $("#editContactForm input[name='tags']").val(contact.tags);
+        $("#editContactForm input[name='tags']").val(
+          String(
+            Array.from(
+              new Set(contact.tags.replace(/\s{2,}/g, "").split(/, |,/))
+            )
+          )
+        );
       });
     });
 
@@ -119,6 +125,7 @@ class App {
         $("#results").html(emptySearchTemplate(searchString));
       } else {
         $("#results").html(contactsTemplate({ contacts: filteredContacts }));
+        // Highlight matching text in contact names and tags
         [...$(".name, .tag")].forEach((el) => {
           if (pattern == "/()/gi") return; //do nothing if search box is empty/backspace
           let origText = el.innerHTML;

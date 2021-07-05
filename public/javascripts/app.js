@@ -48,7 +48,9 @@ class App {
       event.stopPropagation();
       $("#results").hide("fast");
       $("#editContactForm").show("slow");
-      this.currentContactId = event.target.getAttribute("data-id");
+      this.currentContactId = event.target
+        .closest(".edit")
+        .getAttribute("data-id");
       DB.get(this.currentContactId).then((contact) => {
         $("#editContactForm form input[name='full_name']").val(
           contact.full_name
@@ -63,7 +65,9 @@ class App {
 
     $("body").on("click", ".delete", (event) => {
       event.stopPropagation();
-      this.currentContactId = event.target.getAttribute("data-id");
+      this.currentContactId = event.target
+        .closest(".edit")
+        .getAttribute("data-id");
       DB.remove(this.currentContactId);
       this.loadContacts();
     });
@@ -115,12 +119,12 @@ class App {
         $("#results").html(emptySearchTemplate(searchString));
       } else {
         $("#results").html(contactsTemplate({ contacts: filteredContacts }));
-        [...$(".name, .tag")].forEach((el) => {
-          if (pattern == "/()/gi") return; //do nothing if search box is empty/backspace
-          let origText = el.innerHTML;
-          let newText = origText.replace(pattern, "<mark>$1</mark>");
-          el.innerHTML = newText;
-        });
+        // [...$(".name, .tag")].forEach((el) => {
+        //   if (pattern == "/()/gi") return; //do nothing if search box is empty/backspace
+        //   let origText = el.innerHTML;
+        //   let newText = origText.replace(pattern, "<mark>$1</mark>");
+        //   el.innerHTML = newText;
+        // });
       }
     });
   }

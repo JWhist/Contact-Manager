@@ -119,12 +119,12 @@ class App {
         $("#results").html(emptySearchTemplate(searchString));
       } else {
         $("#results").html(contactsTemplate({ contacts: filteredContacts }));
-        // [...$(".name, .tag")].forEach((el) => {
-        //   if (pattern == "/()/gi") return; //do nothing if search box is empty/backspace
-        //   let origText = el.innerHTML;
-        //   let newText = origText.replace(pattern, "<mark>$1</mark>");
-        //   el.innerHTML = newText;
-        // });
+        [...$(".name, .tag")].forEach((el) => {
+          if (pattern == "/()/gi") return; //do nothing if search box is empty/backspace
+          let origText = el.innerHTML;
+          let newText = origText.replace(pattern, "<mark>$1</mark>");
+          el.innerHTML = newText;
+        });
       }
     });
   }

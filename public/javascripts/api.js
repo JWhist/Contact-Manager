@@ -3,7 +3,7 @@ export class API {
     let contacts = await fetch("/api/contacts").then((res) => res.json());
     contacts.forEach((contact) => {
       contact.tags = contact.tags
-        ? contact.tags.replace(/\s{2,}/g, "").split(/, |,/)
+        ? Array.from(new Set(contact.tags.replace(/\s{2,}/g, "").split(/, |,/)))
         : null;
     });
     return contacts;
